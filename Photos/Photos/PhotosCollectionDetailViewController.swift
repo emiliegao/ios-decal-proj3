@@ -24,8 +24,14 @@ class PhotosCollectionsDetailsViewController: UIViewController {
         loadImage(self.photo, imageView: self.imageView)
         self.username.text = "Username: " + self.photo.username
         self.date.text = "Date Uploaded: \(self.photo.dateText)"
-        self.numLikes.text = "Likes: \(self.photo.likes)"
         
+        if self.photo.isLiked == true {
+            self.liked.setTitle("♥", forState: UIControlState.Normal)
+            self.numLikes.text = "Likes: \(self.photo.likes + 1)"
+        } else {
+            self.liked.setTitle("♡", forState: UIControlState.Normal)
+            self.numLikes.text = "Likes: \(self.photo.likes)"
+        }
     }
     
     override func didReceiveMemoryWarning() {
